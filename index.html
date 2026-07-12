@@ -1,603 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beefy Bun · Dabouq, Amman</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Beefy Bun — Smash Burgers Made with Intention · Dabouq, Amman</title>
+<meta name="description" content="Beefy Bun — smash burgers made with intention in Dabouq, Amman. Rated 4.9★. Open daily 2:00 PM – 1:30 AM. Order via WhatsApp or Talabat." />
 
-    :root {
-      --black: #0a0a0a;
-      --near-black: #111;
-      --dark: #1a1a1a;
-      --charcoal: #2a2a2a;
-      --warm: #c8462b;
-      --warm-light: #e85d3a;
-      --cream: #f5f0eb;
-      --white: #fff;
-      --gray: #888;
-      --light-gray: #e0dbd6;
-    }
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
 
-    html { scroll-behavior: smooth; }
+<style>
+  :root {
+    --ink: #0d0b0a;
+    --ink-soft: #14110f;
+    --paper: #f6f1e9;
+    --paper-dim: #cdc4b6;
+    --muted: #8b8378;
+    --ember: #e2612a;
+    --ember-soft: #f0864f;
+    --gold: #d9a441;
+    --line: rgba(246, 241, 233, 0.12);
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  }
 
-    body {
-      font-family: 'Inter', -apple-system, sans-serif;
-      background: var(--black);
-      color: var(--cream);
-      -webkit-font-smoothing: antialiased;
-      line-height: 1.6;
-    }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    img { max-width: 100%; display: block; }
+  html { scroll-behavior: smooth; }
 
-    /* ─── HERO ─── */
-    .hero {
-      height: 100vh;
-      min-height: 600px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-    }
+  body {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
 
-    .hero-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
-    }
+  a { color: inherit; text-decoration: none; }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 640px;
-      padding: 4rem;
-    }
+  .wrap { width: min(1200px, 90vw); margin-inline: auto; }
 
-    .hero-label {
-      font-size: 0.75rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--warm);
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
+  .eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ember-soft);
+  }
 
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      line-height: 1.05;
-      margin-bottom: 1.5rem;
-    }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.08; letter-spacing: -0.01em; }
 
-    .hero-title .warm { color: var(--warm); }
+  /* ---------- NAV ---------- */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  header.scrolled {
+    background: rgba(13, 11, 10, 0.82);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.35rem 0;
+  }
+  .brand { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em; }
+  .brand span { color: var(--ember); }
+  .nav-links { display: flex; gap: 2.4rem; align-items: center; }
+  .nav-links a { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em; color: var(--paper-dim); transition: color 0.25s; }
+  .nav-links a:hover { color: var(--paper); }
+  .nav-cta {
+    border: 1px solid var(--line); border-radius: 100px;
+    padding: 0.6rem 1.35rem !important; color: var(--paper) !important;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .nav-cta:hover { background: var(--ember); border-color: var(--ember); }
+  .burger { display: none; background: none; border: 0; color: var(--paper); font-size: 1.6rem; cursor: pointer; }
 
-    .hero-desc {
-      font-size: 1.1rem;
-      color: rgba(245,240,235,0.7);
-      max-width: 480px;
-      margin-bottom: 2.5rem;
-      line-height: 1.7;
-      font-weight: 300;
-    }
+  /* ---------- HERO ---------- */
+  .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; }
+  .hero-media { position: absolute; inset: 0; z-index: -2; }
+  .hero-media img { transform: scale(1.05); animation: slowZoom 18s ease-out forwards; }
+  @keyframes slowZoom { to { transform: scale(1); } }
+  .hero-overlay {
+    position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(180deg, rgba(13,11,10,0.55) 0%, rgba(13,11,10,0.15) 30%, rgba(13,11,10,0.55) 68%, rgba(13,11,10,0.97) 100%),
+      radial-gradient(120% 90% at 15% 100%, rgba(226,97,42,0.28) 0%, transparent 55%);
+  }
+  .hero-inner { padding-bottom: 5.5rem; padding-top: 8rem; max-width: 900px; }
+  .hero h1 {
+    font-size: clamp(2.9rem, 8vw, 6.4rem);
+    margin: 1.4rem 0 1.6rem;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--paper-dim); max-width: 540px; font-weight: 300; }
+  .hero-actions { display: flex; gap: 1rem; margin-top: 2.6rem; flex-wrap: wrap; align-items: center; }
+  .rating-badge {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.85rem; letter-spacing: 0.05em; color: var(--paper-dim);
+  }
+  .rating-badge b { color: var(--paper); font-weight: 600; }
+  .stars { color: var(--gold); letter-spacing: 0.12em; }
 
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.95rem 1.8rem; border-radius: 100px;
+    font-weight: 600; font-size: 0.92rem; letter-spacing: 0.02em;
+    transition: transform 0.25s, background 0.25s, box-shadow 0.25s;
+  }
+  .btn-primary { background: var(--ember); color: #fff; box-shadow: 0 12px 40px -12px rgba(226,97,42,0.7); }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--ember-soft); }
+  .btn-ghost { border: 1px solid var(--line); color: var(--paper); }
+  .btn-ghost:hover { background: rgba(246,241,233,0.08); transform: translateY(-2px); }
 
-    .btn {
-      padding: 0.9rem 2.2rem;
-      border-radius: 100px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      font-family: 'Inter', sans-serif;
-    }
+  .scroll-hint {
+    position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted);
+    display: flex; flex-direction: column; align-items: center; gap: 0.7rem;
+  }
+  .scroll-hint::after { content: ''; width: 1px; height: 42px; background: linear-gradient(var(--muted), transparent); animation: pulse 2.4s ease-in-out infinite; }
+  @keyframes pulse { 0%,100% { opacity: 0.3; } 50% { opacity: 1; } }
 
-    .btn-primary {
-      background: var(--warm);
-      color: var(--white);
-    }
-    .btn-primary:hover {
-      background: var(--warm-light);
-      transform: translateY(-1px);
-    }
+  /* ---------- SECTION SHELL ---------- */
+  section { position: relative; }
+  .pad { padding: 7rem 0; }
+  .section-head { max-width: 640px; margin-bottom: 3.5rem; }
+  .section-head h2 { font-size: clamp(2.1rem, 4.5vw, 3.4rem); margin-top: 1.1rem; }
+  .section-head p { color: var(--muted); margin-top: 1.2rem; font-weight: 300; font-size: 1.05rem; }
 
-    .btn-outline {
-      background: transparent;
-      color: var(--cream);
-      border: 1px solid rgba(245,240,235,0.3);
-    }
-    .btn-outline:hover {
-      border-color: var(--cream);
-      background: rgba(245,240,235,0.05);
-    }
+  /* ---------- STORY ---------- */
+  .story { background: var(--ink-soft); }
+  .story-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 4.5rem; align-items: center; }
+  .story-copy h2 { font-size: clamp(2rem, 4vw, 3.1rem); margin: 1.2rem 0 1.6rem; }
+  .story-copy p { color: var(--paper-dim); font-weight: 300; margin-bottom: 1.2rem; }
+  .story-copy p b { color: var(--paper); font-weight: 500; }
+  .stats { display: flex; gap: 2.8rem; margin-top: 2.6rem; flex-wrap: wrap; }
+  .stat .num { font-family: var(--serif); font-size: 2.6rem; color: var(--gold); line-height: 1; }
+  .stat .lbl { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 0.5rem; }
+  .story-media { position: relative; height: 560px; }
+  .story-media .frame { position: absolute; border-radius: 6px; overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7); }
+  .story-media .f1 { inset: 0 22% 30% 0; z-index: 2; }
+  .story-media .f2 { width: 52%; height: 44%; right: 0; bottom: 0; z-index: 3; border: 6px solid var(--ink-soft); }
+  .tag-float {
+    position: absolute; top: 1.2rem; left: 1.2rem; z-index: 4;
+    background: rgba(13,11,10,0.7); backdrop-filter: blur(8px);
+    padding: 0.5rem 1rem; border-radius: 100px; font-size: 0.72rem;
+    letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid var(--line);
+  }
 
-    .hero-scroll {
-      position: absolute;
-      bottom: 2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      color: rgba(245,240,235,0.3);
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      z-index: 2;
-    }
+  /* ---------- MENU ---------- */
+  .menu-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3.5rem; }
+  .menu-head .section-head { margin-bottom: 0; }
+  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+  .dish {
+    position: relative; border-radius: 8px; overflow: hidden;
+    background: var(--ink-soft); border: 1px solid var(--line);
+    transition: transform 0.4s cubic-bezier(.2,.7,.2,1), border-color 0.4s;
+  }
+  .dish:hover { transform: translateY(-6px); border-color: rgba(226,97,42,0.5); }
+  .dish-img { aspect-ratio: 4/3; overflow: hidden; }
+  .dish-img img { transition: transform 0.7s cubic-bezier(.2,.7,.2,1); }
+  .dish:hover .dish-img img { transform: scale(1.07); }
+  .dish-body { padding: 1.4rem 1.5rem 1.6rem; }
+  .dish-row { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+  .dish-row h3 { font-size: 1.28rem; }
+  .price { font-family: var(--serif); font-size: 1.2rem; color: var(--gold); white-space: nowrap; }
+  .dish-body p { color: var(--muted); font-size: 0.9rem; font-weight: 300; margin-top: 0.5rem; }
+  .dish-badge {
+    position: absolute; top: 1rem; left: 1rem; z-index: 2;
+    background: var(--ember); color: #fff; font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase; padding: 0.35rem 0.75rem; border-radius: 100px;
+  }
+  .menu-note { text-align: center; margin-top: 3rem; color: var(--muted); font-size: 0.9rem; }
+  .menu-note b { color: var(--paper-dim); font-weight: 500; }
 
-    /* ─── SECTIONS ─── */
-    section { padding: 6rem 2rem; }
+  /* ---------- GALLERY ---------- */
+  .gallery { background: var(--ink-soft); }
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 1rem; }
+  .gcell { overflow: hidden; border-radius: 6px; position: relative; }
+  .gcell img { transition: transform 0.8s cubic-bezier(.2,.7,.2,1); filter: saturate(1.05); }
+  .gcell:hover img { transform: scale(1.08); }
+  .gcell::after { content: ''; position: absolute; inset: 0; background: linear-gradient(transparent 60%, rgba(13,11,10,0.4)); opacity: 0; transition: opacity 0.4s; }
+  .gcell:hover::after { opacity: 1; }
+  .g-wide { grid-column: span 2; }
+  .g-tall { grid-row: span 2; }
 
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-    }
+  /* ---------- INFO BAR ---------- */
+  .info { background: var(--ink); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .info-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .info-cell { padding: 3rem 2rem; border-right: 1px solid var(--line); transition: background 0.3s; }
+  .info-cell:last-child { border-right: 0; }
+  .info-cell:hover { background: var(--ink-soft); }
+  .info-cell .ic { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember-soft); font-weight: 600; }
+  .info-cell .big { font-family: var(--serif); font-size: 1.3rem; margin: 0.9rem 0 0.3rem; display: block; }
+  .info-cell .small { color: var(--muted); font-size: 0.9rem; }
+  .info-cell a.big:hover { color: var(--gold); }
 
-    .section-header {
-      margin-bottom: 4rem;
-      max-width: 640px;
-    }
+  /* ---------- CTA ---------- */
+  .cta { position: relative; overflow: hidden; text-align: center; }
+  .cta-media { position: absolute; inset: 0; z-index: -2; }
+  .cta-media img { filter: brightness(0.32) saturate(1.1); }
+  .cta-overlay { position: absolute; inset: 0; z-index: -1; background: radial-gradient(90% 100% at 50% 100%, rgba(226,97,42,0.35), transparent 60%); }
+  .cta .wrap { padding: 8rem 0; }
+  .cta h2 { font-size: clamp(2.4rem, 6vw, 4.6rem); }
+  .cta h2 em { font-style: italic; color: var(--gold); }
+  .cta p { color: var(--paper-dim); max-width: 500px; margin: 1.5rem auto 2.6rem; font-weight: 300; }
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-wa { background: #25d366; color: #06331b; }
+  .btn-wa:hover { background: #2ce575; transform: translateY(-2px); }
 
-    .section-tag {
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--warm);
-      font-weight: 600;
-      margin-bottom: 0.75rem;
-    }
+  /* ---------- FOOTER ---------- */
+  footer { background: var(--ink); padding: 4rem 0 2.5rem; }
+  .foot-grid { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; padding-bottom: 3rem; border-bottom: 1px solid var(--line); }
+  .foot-brand { font-family: var(--serif); font-size: 2rem; font-weight: 700; }
+  .foot-brand span { color: var(--ember); }
+  .foot-brand p { font-family: var(--sans); font-size: 0.88rem; color: var(--muted); font-weight: 300; margin-top: 0.6rem; max-width: 280px; }
+  .foot-col h4 { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ember-soft); margin-bottom: 1rem; }
+  .foot-col a, .foot-col p { display: block; color: var(--paper-dim); font-size: 0.9rem; margin-bottom: 0.55rem; font-weight: 300; transition: color 0.2s; }
+  .foot-col a:hover { color: var(--paper); }
+  .foot-bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; padding-top: 2rem; color: var(--muted); font-size: 0.82rem; }
+  .foot-bottom a { color: var(--paper-dim); }
 
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
+  /* ---------- REVEAL ---------- */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s cubic-bezier(.2,.7,.2,1), transform 0.9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .hero-media img { animation: none; transform: none; }
+    .scroll-hint::after { animation: none; }
+  }
 
-    .section-text {
-      color: rgba(245,240,235,0.6);
-      font-size: 1rem;
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
-    .section-title-right {
-      text-align: right;
-      margin-left: auto;
-    }
-
-    /* ─── STORY ─── */
-    .story {
-      background: var(--near-black);
-    }
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-
-    .story-image {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      border-radius: 4px;
-    }
-
-    .story-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .stat h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2rem;
-      color: var(--warm);
-    }
-
-    .stat p {
-      font-size: 0.85rem;
-      color: var(--gray);
-      margin-top: 0.25rem;
-    }
-
-    /* ─── MENU ─── */
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--charcoal);
-      border: 1px solid var(--charcoal);
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    .menu-item {
-      background: var(--dark);
-      padding: 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 1rem;
-      transition: background 0.2s;
-    }
-
-    .menu-item:hover { background: #1e1e1e; }
-
-    .menu-item h3 {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin-bottom: 0.4rem;
-    }
-
-    .menu-item .desc {
-      font-size: 0.85rem;
-      color: var(--gray);
-      line-height: 1.5;
-      font-weight: 300;
-    }
-
-    .menu-item .price {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--cream);
-      white-space: nowrap;
-      font-variant-numeric: tabular-nums;
-    }
-
-    /* ─── GALLERY ─── */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.5rem;
-    }
-
-    .gallery-grid img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
-      border-radius: 4px;
-      transition: transform 0.4s ease, opacity 0.4s ease;
-    }
-
-    .gallery-grid img:hover {
-      transform: scale(1.02);
-      opacity: 0.9;
-    }
-
-    .gallery-grid .tall {
-      aspect-ratio: 2/3;
-      grid-row: span 2;
-    }
-
-    .gallery-grid .wide {
-      aspect-ratio: 2/1;
-      grid-column: span 2;
-    }
-
-    /* ─── INFO ─── */
-    .info-strip {
-      background: var(--near-black);
-      border-top: 1px solid var(--charcoal);
-      border-bottom: 1px solid var(--charcoal);
-    }
-
-    .info-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--charcoal);
-    }
-
-    .info-card {
-      background: var(--near-black);
-      padding: 2.5rem 2rem;
-      text-align: center;
-    }
-
-    .info-card h4 {
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gray);
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-
-    .info-card p {
-      font-size: 0.95rem;
-      color: var(--cream);
-    }
-
-    .info-card a {
-      color: var(--warm);
-      text-decoration: none;
-    }
-    .info-card a:hover { text-decoration: underline; }
-
-    /* ─── CTA ─── */
-    .cta-section {
-      text-align: center;
-      padding: 8rem 2rem;
-      position: relative;
-      background: linear-gradient(135deg, var(--near-black), var(--dark));
-    }
-
-    .cta-section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.2rem, 5vw, 3.5rem);
-      margin-bottom: 1rem;
-    }
-
-    .cta-section p {
-      color: var(--gray);
-      max-width: 500px;
-      margin: 0 auto 2.5rem;
-      font-weight: 300;
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--black);
-      padding: 2.5rem;
-      text-align: center;
-      border-top: 1px solid var(--charcoal);
-    }
-
-    footer p {
-      font-size: 0.85rem;
-      color: var(--gray);
-    }
-
-    footer .agency {
-      margin-top: 1rem;
-      font-size: 0.75rem;
-      color: rgba(136,136,136,0.4);
-    }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      .story-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .story-image { height: 320px; }
-      .menu-grid { grid-template-columns: 1fr; }
-      .info-grid { grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      section { padding: 4rem 1.5rem; }
-      .hero-content { padding: 2rem; }
-      .story-stats { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
-      .gallery-grid .wide { grid-column: span 2; }
-      .info-grid { grid-template-columns: 1fr; }
-      .hero-actions .btn { width: 100%; justify-content: center; }
-    }
-  </style>
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px) {
+    .nav-links { position: fixed; inset: 0 0 auto 0; top: 0; flex-direction: column; background: rgba(13,11,10,0.97); backdrop-filter: blur(16px); padding: 6rem 2rem 2.5rem; gap: 1.6rem; align-items: flex-start; transform: translateY(-100%); transition: transform 0.4s cubic-bezier(.2,.7,.2,1); border-bottom: 1px solid var(--line); }
+    .nav-links.open { transform: translateY(0); }
+    .nav-links a { font-size: 1.1rem; }
+    .burger { display: block; z-index: 60; }
+    .story-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .story-media { height: 440px; }
+    .menu-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+    .info-grid { grid-template-columns: repeat(2, 1fr); }
+    .info-cell:nth-child(2) { border-right: 0; }
+    .info-cell:nth-child(1), .info-cell:nth-child(2) { border-bottom: 1px solid var(--line); }
+  }
+  @media (max-width: 560px) {
+    .pad { padding: 4.5rem 0; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 140px; }
+    .g-wide { grid-column: span 2; }
+    .g-tall { grid-row: span 1; }
+    .info-grid { grid-template-columns: 1fr; }
+    .info-cell { border-right: 0 !important; border-bottom: 1px solid var(--line); }
+    .hero-inner { padding-bottom: 4rem; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- ═══ HERO ═══ -->
-  <section class="hero">
-    <img
-      src="https://images.unsplash.com/photo-1568901346375-23c9450cbe1b?w=1600&q=80"
-      alt="Smash burger"
-      class="hero-image"
-    />
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <p class="hero-label">Dabouq · Amman</p>
-      <h1 class="hero-title">
-        Beefy<br />
-        <span class="warm">Bun</span>
-      </h1>
-      <p class="hero-desc">
-        Smash burgers made with intention. Double patties, toasted brioche,
-        and the kind of flavour that keeps you coming back at 1AM.
-      </p>
-      <div class="hero-actions">
-        <a href="https://wa.me/962790077420" class="btn btn-primary">
-          Order on WhatsApp
-        </a>
-        <a href="#menu" class="btn btn-outline">
-          See the menu
-        </a>
+<!-- NAV -->
+<header id="header">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="brand">Beefy<span>.</span>Bun</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#story">Story</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#visit">Visit</a>
+        <a href="https://wa.me/962790077420" class="nav-cta">Order Now</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Toggle menu">☰</button>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-media">
+    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1600&q=80" alt="Smash burger with melted cheese" />
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="eyebrow reveal">Dabouq · Amman · Jordan</span>
+      <h1 class="reveal">Smash burgers<br>made with <em>intention</em>.</h1>
+      <p class="hero-sub reveal">Thin, lacy, caramelized edges. Aged cheddar that melts into every crag. Buttered brioche toasted to order. This is the burger you drive across the city for.</p>
+      <div class="hero-actions reveal">
+        <a href="https://wa.me/962790077420" class="btn btn-primary">Order on WhatsApp</a>
+        <a href="#menu" class="btn btn-ghost">View the Menu</a>
+      </div>
+      <div class="hero-actions reveal" style="margin-top:2rem;">
+        <span class="rating-badge"><span class="stars">★★★★★</span> <b>4.9</b> on Google</span>
+        <span class="rating-badge" style="margin-left:1.2rem;"><b>16K</b> on Instagram</span>
       </div>
     </div>
-    <p class="hero-scroll">Scroll</p>
-  </section>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
 
-  <!-- ═══ STORY ═══ -->
-  <section class="story" id="story">
-    <div class="container">
-      <div class="story-grid">
-        <div>
-          <p class="section-tag">Our Story</p>
-          <h2 class="section-title">
-            Fire, meat,<br />
-            <span class="warm">and a little obsession.</span>
-          </h2>
-          <p class="section-text" style="margin: 1.5rem 0;">
-            Beefy Bun started with one belief: a smash burger should be
-            unforgettable. Every patty is hand-pressed, every bun toasted
-            to order, every sauce built from scratch. No short cuts,
-            no frozen inventory — just real food made with real intent.
-          </p>
-          <p class="section-text">
-            We're not trying to be everything to everyone. We serve great
-            burgers in a room that feels like home, and we stay open late
-            because hunger doesn't punch a clock.
-          </p>
-          <div class="story-stats">
-            <div class="stat">
-              <h3>4.9★</h3>
-              <p>Google rating</p>
-            </div>
-            <div class="stat">
-              <h3>16K</h3>
-              <p>Instagram followers</p>
-            </div>
-            <div class="stat">
-              <h3>🔥</h3>
-              <p>Always smashing</p>
-            </div>
-          </div>
-        </div>
-        <img
-          src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=800&q=80"
-          alt="Beefy Bun burger"
-          class="story-image"
-        />
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ MENU ═══ -->
-  <section id="menu">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-tag">The Menu</p>
-        <h2 class="section-title">What we serve</h2>
-        <p class="section-text">
-          Six burgers. Four sides. Two shakes. Everything made to order.
-        </p>
-      </div>
-
-      <div class="menu-grid">
-        <div class="menu-item">
-          <div>
-            <h3>The Original Smash</h3>
-            <p class="desc">Double patty, American cheese, pickles, onions, special sauce</p>
-          </div>
-          <span class="price">5.50</span>
-        </div>
-
-        <div class="menu-item">
-          <div>
-            <h3>Fire &amp; Cheese</h3>
-            <p class="desc">Triple smash, cheddar, jalapeños, crispy onions, fire mayo</p>
-          </div>
-          <span class="price">6.50</span>
-        </div>
-
-        <div class="menu-item">
-          <div>
-            <h3>The Inferno</h3>
-            <p class="desc">Bacon jam, smoked gouda, caramelised onions, arugula</p>
-          </div>
-          <span class="price">7.50</span>
-        </div>
-
-        <div class="menu-item">
-          <div>
-            <h3>Garden Smash</h3>
-            <p class="desc">Plant-based patty, vegan cheese, fresh slaw, BBQ</p>
-          </div>
-          <span class="price">6.00</span>
-        </div>
-
-        <div class="menu-item">
-          <div>
-            <h3>Loaded Fries</h3>
-            <p class="desc">Beef chunks, cheese sauce, jalapeños, fire drizzle</p>
-          </div>
-          <span class="price">4.00</span>
-        </div>
-
-        <div class="menu-item">
-          <div>
-            <h3>Thickshakes</h3>
-            <p class="desc">Chocolate, salted caramel, or Oreo. Made to order.</p>
-          </div>
-          <span class="price">3.50</span>
+<!-- STORY -->
+<section class="story pad" id="story">
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="story-copy reveal">
+        <span class="eyebrow">Our Story</span>
+        <h2>A better burger, obsessed over.</h2>
+        <p>Beefy Bun started with a simple conviction: a smash burger should be an <b>event</b>, not an afterthought. We press fresh, never-frozen beef onto a screaming-hot flat top until the edges go golden and crisp — that Maillard crust is where the flavor lives.</p>
+        <p>Everything else is built to match. Buns toasted in beef fat. Sauces made in-house every morning. Pickles we brine ourselves. Nothing is here by accident — <b>every element earns its place.</b></p>
+        <div class="stats">
+          <div class="stat"><div class="num">4.9★</div><div class="lbl">Google Rating</div></div>
+          <div class="stat"><div class="num">16K</div><div class="lbl">Instagram Family</div></div>
+          <div class="stat"><div class="num">100%</div><div class="lbl">Fresh Never Frozen</div></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══ GALLERY ═══ -->
-  <section style="background: var(--near-black);">
-    <div class="container">
-      <div class="section-header">
-        <p class="section-tag">Gallery</p>
-        <h2 class="section-title">The space,<br />the food, the vibe</h2>
-      </div>
-      <div class="gallery-grid">
-        <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=600&q=80" alt="Burger" />
-        <img src="https://images.unsplash.com/photo-1586816001966-79b736744398?w=600&q=80" alt="Fries" />
-        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Restaurant interior" class="tall" />
-        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Food presentation" class="wide" />
-        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&q=80" alt="Burger close up" />
-        <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=600&q=80" alt="Burger and fries" />
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ INFO STRIP ═══ -->
-  <div class="info-strip">
-    <div class="container" style="max-width: 900px;">
-      <div class="info-grid">
-        <div class="info-card">
-          <h4>Location</h4>
-          <p>Nalshek Street<br />Dabouq, Amman</p>
+      <div class="story-media reveal">
+        <div class="frame f1">
+          <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=900&q=80" alt="Loaded smash burger" />
+          <span class="tag-float">The Original Smash</span>
         </div>
-        <div class="info-card">
-          <h4>Hours</h4>
-          <p>Daily · 2:00 PM – 1:30 AM</p>
-        </div>
-        <div class="info-card">
-          <h4>Contact</h4>
-          <p><a href="tel:+962790077420">07 9007 7420</a></p>
-        </div>
-        <div class="info-card">
-          <h4>Instagram</h4>
-          <p><a href="https://instagram.com/beefy.bun" target="_blank">@beefy.bun</a></p>
+        <div class="frame f2">
+          <img src="https://images.unsplash.com/photo-1552526881-721ce8509abd?w=700&q=80" alt="Golden crispy fries" />
         </div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ═══ CTA ═══ -->
-  <section class="cta-section">
-    <h2>Craving a smash?</h2>
-    <p>Order direct on WhatsApp or find us on Talabat. We're open late.</p>
-    <a href="https://wa.me/962790077420" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 3rem;">
-      Order on WhatsApp
-    </a>
-    <p style="margin-top: 1.5rem; font-size: 0.85rem;">
-      Or order via <a href="#" style="color: var(--warm);">Talabat</a>
-    </p>
-  </section>
+<!-- MENU -->
+<section class="pad" id="menu">
+  <div class="wrap">
+    <div class="menu-head reveal">
+      <div class="section-head">
+        <span class="eyebrow">The Menu</span>
+        <h2>Signatures worth the drive.</h2>
+        <p>A tight, focused menu — because we'd rather do a few things exceptionally than everything just okay.</p>
+      </div>
+      <a href="https://wa.me/962790077420" class="btn btn-ghost">Order the Full Menu</a>
+    </div>
 
-  <!-- ═══ FOOTER ═══ -->
-  <footer>
-    <p>Beefy Bun · Nalshek Street, Dabouq · Amman, Jordan</p>
-    <p class="agency">
-      Demo by <span style="color: var(--warm);">Your Agency</span> · Built as a sample
-    </p>
-  </footer>
+    <div class="menu-grid">
+      <article class="dish reveal">
+        <span class="dish-badge">Bestseller</span>
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80" alt="The Beefy Double smash burger" /></div>
+        <div class="dish-body">
+          <div class="dish-row"><h3>The Beefy Double</h3><span class="price">4.90 JD</span></div>
+          <p>Two smashed patties, double aged cheddar, house sauce, pickles, toasted brioche.</p>
+        </div>
+      </article>
 
+      <article class="dish reveal">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800&q=80" alt="Smoked bacon cheeseburger" /></div>
+        <div class="dish-body">
+          <div class="dish-row"><h3>Smoked Bacon Stack</h3><span class="price">5.75 JD</span></div>
+          <p>Double smash, crispy smoked bacon, cheddar, caramelized onion, smoky aioli.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=800&q=80" alt="Spicy jalapeno burger" /></div>
+        <div class="dish-body">
+          <div class="dish-row"><h3>The Heatwave</h3><span class="price">5.50 JD</span></div>
+          <p>Double smash, pepper jack, fresh jalapeño, chipotle mayo, crispy onions.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <span class="dish-badge">Signature</span>
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1521305916504-4a1121188589?w=800&q=80" alt="The Original Single smash burger" /></div>
+        <div class="dish-body">
+          <div class="dish-row"><h3>The Original Single</h3><span class="price">3.75 JD</span></div>
+          <p>One perfect smashed patty, cheddar, house sauce, pickle. Where it all began.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=800&q=80" alt="Loaded cheese fries" /></div>
+        <div class="dish-body">
+          <div class="dish-row"><h3>Loaded Beefy Fries</h3><span class="price">3.25 JD</span></div>
+          <p>Hand-cut fries, molten cheese sauce, beef crumble, scallion, house drizzle.</p>
+        </div>
+      </article>
+
+      <article class="dish reveal">
+        <div class="dish-img"><img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=800&q=80" alt="Crispy golden hand-cut fries" /></div>
+        <div class="dish-body">
+          <div class="dish-row"><h3>Classic Fries &amp; Shake</h3><span class="price">4.00 JD</span></div>
+          <p>Golden hand-cut fries with sea salt, paired with a thick vanilla-bean shake.</p>
+        </div>
+      </article>
+    </div>
+    <p class="menu-note reveal">All burgers available as single, double or triple · Add-ons available · Also on <b>Talabat</b> for delivery.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery pad" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Table</span>
+      <h2>Straight off the flat top.</h2>
+      <p>No filters, no stock trickery — just the real thing, plated and served daily in Dabouq.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gcell g-wide g-tall reveal"><img src="https://images.unsplash.com/photo-1610440042657-612c34d95e9f?w=900&q=80" alt="Smash burger close up" /></div>
+      <div class="gcell reveal"><img src="https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?w=600&q=80" alt="Burger and fries" /></div>
+      <div class="gcell reveal"><img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=600&q=80" alt="Juicy cheeseburger" /></div>
+      <div class="gcell g-tall reveal"><img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=600&q=80" alt="Stacked burger" /></div>
+      <div class="gcell reveal"><img src="https://images.unsplash.com/photo-1512152272829-e3139592d56f?w=600&q=80" alt="Restaurant interior" /></div>
+      <div class="gcell reveal"><img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=600&q=80" alt="Cozy diner interior" /></div>
+      <div class="gcell g-wide reveal"><img src="https://images.unsplash.com/photo-1606131731446-5568d87113aa?w=900&q=80" alt="Burger with fries platter" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BAR -->
+<section class="info" id="visit">
+  <div class="wrap">
+    <div class="info-grid">
+      <div class="info-cell reveal">
+        <div class="ic">Find Us</div>
+        <a href="https://maps.google.com/?q=Nalshek+Street+Dabouq+Amman" class="big">Nalshek Street</a>
+        <div class="small">Dabouq, Amman · Jordan</div>
+      </div>
+      <div class="info-cell reveal">
+        <div class="ic">Open Daily</div>
+        <span class="big">2:00 PM – 1:30 AM</span>
+        <div class="small">Seven days a week</div>
+      </div>
+      <div class="info-cell reveal">
+        <div class="ic">Call / WhatsApp</div>
+        <a href="tel:+962790077420" class="big">+962 7 9007 7420</a>
+        <div class="small">Dine-in · Takeaway · Talabat</div>
+      </div>
+      <div class="info-cell reveal">
+        <div class="ic">Follow</div>
+        <a href="https://instagram.com/beefy.bun" class="big">@beefy.bun</a>
+        <div class="small">16K on Instagram</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="cta-media"><img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=1600&q=80" alt="Gourmet burger" /></div>
+  <div class="cta-overlay"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">Hungry Yet?</span>
+    <h2 class="reveal" style="margin-top:1.2rem;">Your table — or your <em>doorstep</em>.</h2>
+    <p class="reveal">Message us on WhatsApp to place an order, or find us on Talabat for delivery across Amman. Fresh, fast, and worth every bite.</p>
+    <div class="cta-actions reveal">
+      <a href="https://wa.me/962790077420" class="btn btn-wa">Order on WhatsApp</a>
+      <a href="https://www.talabat.com" class="btn btn-ghost">Order on Talabat</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        Beefy<span>.</span>Bun
+        <p>Smash burgers made with intention. Handcrafted daily in Dabouq, Amman.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#story">Our Story</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#visit">Visit Us</a>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <p>Nalshek Street, Dabouq</p>
+        <p>Amman, Jordan</p>
+        <p>Daily · 2:00 PM – 1:30 AM</p>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        <a href="https://wa.me/962790077420">WhatsApp</a>
+        <a href="tel:+962790077420">+962 7 9007 7420</a>
+        <a href="https://instagram.com/beefy.bun">Instagram @beefy.bun</a>
+        <a href="https://www.talabat.com">Order on Talabat</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Beefy Bun. All rights reserved.</span>
+      <span>Demo by Your Agency</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4 * 0.08) + 's';
+    io.observe(el);
+  });
+</script>
 </body>
 </html>
