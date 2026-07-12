@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beefy Bun — Where Flavor Meets Fire 🔥</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&family=Bebas+Neue&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --fire: #ff4500;
+      --ember: #ff6b35;
+      --dark: #1a0a00;
+      --darker: #0d0500;
+      --cream: #fff8f0;
+      --gold: #ffc857;
+      --smoke: #2a1a0a;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--darker);
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 40%, #2a0a00 70%, var(--darker) 100%);
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(ellipse at 50% 50%, rgba(255,69,0,0.08) 0%, transparent 60%);
+      animation: pulse-fire 4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-fire {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 6px;
+      color: var(--ember);
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 15vw, 10rem);
+      line-height: 0.9;
+      color: var(--cream);
+      text-shadow: 0 0 40px rgba(255,69,0,0.3);
+    }
+
+    .hero-title .fire {
+      color: var(--fire);
+      display: block;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      margin-top: 0.2em;
+    }
+
+    .hero-tagline {
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      font-weight: 700;
+      color: var(--gold);
+      margin: 1.5rem 0 2rem;
+      letter-spacing: 2px;
+    }
+
+    .hero-tagline span {
+      color: var(--fire);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: linear-gradient(135deg, var(--fire), var(--ember));
+      color: #fff;
+      border: none;
+      padding: 1rem 3rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-family: 'Tajawal', sans-serif;
+      box-shadow: 0 4px 25px rgba(255,69,0,0.4);
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 35px rgba(255,69,0,0.6);
+    }
+
+    /* ── FLOATING FIRE EFFECT ── */
+    .flame-particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--fire);
+      border-radius: 50%;
+      opacity: 0;
+      animation: rise 3s ease-in infinite;
+    }
+
+    @keyframes rise {
+      0% { opacity: 0; transform: translateY(0) scale(1); }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.3; }
+      100% { opacity: 0; transform: translateY(-200px) scale(0); }
+    }
+
+    /* ── SECTION SHARED ── */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 4px;
+      color: var(--ember);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      margin-bottom: 3rem;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: var(--darker);
+      position: relative;
+    }
+
+    .about::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--fire), transparent);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: rgba(255,248,240,0.8);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--smoke);
+      border: 1px solid rgba(255,69,0,0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .stat-card:hover {
+      border-color: var(--fire);
+      transform: translateY(-5px);
+    }
+
+    .stat-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.5rem;
+      color: var(--fire);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: rgba(255,248,240,0.6);
+      margin-top: 0.3rem;
+    }
+
+    /* ── MENU ── */
+    .menu {
+      background: var(--dark);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .menu-card {
+      background: var(--smoke);
+      border: 1px solid rgba(255,69,0,0.15);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .menu-card::before {
+      content: '🔥';
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 3rem;
+      opacity: 0.1;
+      transform: rotate(15deg);
+    }
+
+    .menu-card:hover {
+      border-color: var(--fire);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 40px rgba(255,69,0,0.15);
+    }
+
+    .menu-card h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-card .desc {
+      color: rgba(255,248,240,0.6);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .menu-card .price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      color: var(--fire);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .menu-card .price span {
+      font-size: 0.9rem;
+      color: rgba(255,248,240,0.4);
+      font-family: 'Tajawal', sans-serif;
+    }
+
+    /* ── INFO BAR ── */
+    .info-bar {
+      background: linear-gradient(135deg, var(--fire), var(--ember));
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .info-bar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .info-item h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      margin-bottom: 0.3rem;
+      color: #fff;
+    }
+
+    .info-item p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+    }
+
+    .info-item a {
+      color: #fff;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(255,255,255,0.5);
+    }
+
+    /* ── GALLERY ── */
+    .gallery {
+      background: var(--darker);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      aspect-ratio: 1;
+      background: var(--smoke);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      border: 1px solid rgba(255,69,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      border-color: var(--fire);
+      transform: scale(1.02);
+    }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      background: linear-gradient(135deg, var(--dark) 0%, #2a0a00 100%);
+      text-align: center;
+      padding: 6rem 2rem;
+      position: relative;
+    }
+
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .cta-final h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    .cta-final p {
+      color: rgba(255,248,240,0.7);
+      font-size: 1.2rem;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--darker);
+      border-top: 1px solid rgba(255,69,0,0.1);
+      padding: 2rem;
+      text-align: center;
+      color: rgba(255,248,240,0.4);
+      font-size: 0.85rem;
+    }
+
+    footer span {
+      color: var(--fire);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .about-stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .info-bar-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .about-stats {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .info-bar-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">دابوق • Dabouq</p>
+      <h1 class="hero-title">
+        BEEFY
+        <span class="fire">BUN 🔥</span>
+      </h1>
+      <p class="hero-tagline">Where Flavor Meets <span>Fire</span></p>
+      <p style="color: rgba(255,248,240,0.6); font-size: 1.1rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+        Smash burgers, bold flavors, and a vibe that hits different. 
+        Nalshek Street, Dabouq — open daily 2PM–1:30AM.
+      </p>
+      <a href="https://wa.me/962790077420?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%D8%A8%D8%AF%D9%8A%20%D8%A3%D8%AD%D8%AC%D8%B2%20%D8%B7%D9%84%D8%A8" 
+         class="hero-cta" target="_blank">
+        📞 Order on WhatsApp
+      </a>
+      <p style="margin-top: 1.5rem; font-size: 0.85rem; color: rgba(255,248,240,0.3);">
+        أو اطلب عبر <a href="#" style="color: var(--gold);">Talabat</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════ ABOUT + STATS ═══════ -->
+  <section class="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="section-label">Our Story</p>
+          <h2 class="section-title">Fire, Meat &amp; <span style="color: var(--fire);">Passion</span></h2>
+          <p>
+            Beefy Bun isn't just another burger joint. We're the place where quality 
+            meets heat — literally. Every patty is smashed to perfection, every bun 
+            toasted golden, every sauce crafted to hit that perfect balance of smoky, 
+            spicy, and savory.
+          </p>
+          <p>
+            Located in the heart of Dabouq, we've become a late-night favorite for 
+            anyone craving real, unapologetic flavor. No shortcuts. No frozen patties. 
+            Just fire.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <span class="stat-number">4.9★</span>
+            <span class="stat-label">Google Rating</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">16K</span>
+            <span class="stat-label">Instagram Followers</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">🔥</span>
+            <span class="stat-label">Always Smashing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SIGNATURE MENU ═══════ -->
+  <section class="menu">
+    <div class="container">
+      <p class="section-label" style="text-align: center;">The Menu</p>
+      <h2 class="section-title" style="text-align: center;">Signature <span style="color: var(--fire);">Smash</span> Burgers</h2>
+      <div class="menu-grid">
+        <div class="menu-card">
+          <h3>🔥 The Original Smash</h3>
+          <p class="desc">Double beef patty, American cheese, pickles, onions, special sauce — simplicity done right.</p>
+          <div class="price">5.50 <span>JOD</span></div>
+        </div>
+        <div class="menu-card">
+          <h3>🧀 Fire &amp; Cheese</h3>
+          <p class="desc">Triple smash with cheddar, jalapeños, crispy onions, and our spicy fire mayo.</p>
+          <div class="price">6.50 <span>JOD</span></div>
+        </div>
+        <div class="menu-card">
+          <h3>🥓 The Inferno</h3>
+          <p class="desc">Bacon jam, smoked gouda, caramelized onions, arugula — for the real ones.</p>
+          <div class="price">7.50 <span>JOD</span></div>
+        </div>
+        <div class="menu-card">
+          <h3>🍟 Beefy Fries</h3>
+          <p class="desc">Loaded fries with beef chunks, cheese sauce, jalapeños, and a drizzle of fire sauce.</p>
+          <div class="price">4.00 <span>JOD</span></div>
+        </div>
+        <div class="menu-card">
+          <h3>🥤 Shakes</h3>
+          <p class="desc">Thick, creamy, made-to-order. Chocolate, salted caramel, or Oreo.</p>
+          <div class="price">3.50 <span>JOD</span></div>
+        </div>
+        <div class="menu-card">
+          <h3>🌱 The Garden Smash</h3>
+          <p class="desc">Plant-based patty, vegan cheese, fresh slaw, and smoky BBQ sauce.</p>
+          <div class="price">6.00 <span>JOD</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ INFO BAR ═══════ -->
+  <div class="info-bar">
+    <div class="info-bar-grid">
+      <div class="info-item">
+        <h4>📍 Location</h4>
+        <p>Nalshek Street, Dabouq, Amman</p>
+      </div>
+      <div class="info-item">
+        <h4>🕐 Hours</h4>
+        <p>Daily · 2:00 PM – 1:30 AM</p>
+      </div>
+      <div class="info-item">
+        <h4>📞 Call</h4>
+        <p><a href="tel:+962790077420">07 9007 7420</a></p>
+      </div>
+      <div class="info-item">
+        <h4>📷 Instagram</h4>
+        <p><a href="https://instagram.com/beefy.bun" target="_blank">@beefy.bun</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ GALLERY ═══════ -->
+  <section class="gallery">
+    <div class="container">
+      <p class="section-label" style="text-align: center;">Moments</p>
+      <h2 class="section-title" style="text-align: center;">🔥 In Action</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">🍔</div>
+        <div class="gallery-item">🧀</div>
+        <div class="gallery-item">🥓</div>
+        <div class="gallery-item">🍟</div>
+        <div class="gallery-item">🥤</div>
+        <div class="gallery-item">🔥</div>
+      </div>
+      <p style="text-align: center; margin-top: 1.5rem; color: rgba(255,248,240,0.4); font-size: 0.9rem;">
+        صور حقيقية من Beefy Bun — قريباً على الموقع
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════ FINAL CTA ═══════ -->
+  <section class="cta-final">
+    <h2>Craving <span style="color: var(--fire);">Fire</span>?</h2>
+    <p>اطلب الآن — التوصيل متوفر عبر Talabat أو call us direct. 
+    <br>نشتاق لشوفتك في Beefy Bun 🔥</p>
+    <a href="https://wa.me/962790077420?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%20%D8%B9%D9%86%D8%AF%D9%8A%20%D8%B7%D9%84%D8%A8%F0%9F%94%A5" 
+       class="hero-cta" target="_blank">
+      🛵 Order Now
+    </a>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <p>Beefy Bun <span>🔥</span> Where Flavor Meets Fire</p>
+    <p style="margin-top: 0.5rem;">Nalshek Street, Dabouq, Amman · 07 9007 7420</p>
+    <p style="margin-top: 0.5rem; font-size: 0.75rem; color: rgba(255,248,240,0.25);">
+      Demo site by Your Agency Name · Built with ❤️ for Beefy Bun
+    </p>
+  </footer>
+
+  <script>
+    // Floating fire particles
+    for (let i = 0; i < 15; i++) {
+      const p = document.createElement('div');
+      p.className = 'flame-particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.top = Math.random() * 60 + 40 + '%';
+      p.style.animationDelay = Math.random() * 3 + 's';
+      p.style.width = p.style.height = (3 + Math.random() * 5) + 'px';
+      document.querySelector('.hero').appendChild(p);
+    }
+  </script>
+</body>
+</html>
